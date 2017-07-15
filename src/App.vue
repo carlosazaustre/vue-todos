@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <logo></logo>
     <todo
       v-for="(todo, index) in todos"
       :todo="todo"
@@ -11,12 +12,13 @@
 </template>
 
 <script>
+import Logo from './components/Logo.vue'
 import Todo from './components/Todo.vue'
 import AddTodo from './components/AddTodo.vue'
 
 export default {
   name: 'app',
-  components: { Todo, AddTodo },
+  components: { Logo, Todo, AddTodo },
 
   data () {
     return {
@@ -47,6 +49,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

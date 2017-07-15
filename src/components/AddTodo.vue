@@ -23,6 +23,8 @@ export default {
         title: this.title,
         description: this.description
       })
+      this.title = ''
+      this.description = ''
     }
   }
 }
@@ -36,12 +38,14 @@ export default {
     padding: 1rem;
   }
   input {
-    padding: .5rem;
+    padding: .75rem;
+    border: none;
+    border-radius: 3px;
   }
 
   button {
     background-color: orange;
     border: none;
-    padding: .5rem;
+    padding: .75rem;
   }
 </style>
