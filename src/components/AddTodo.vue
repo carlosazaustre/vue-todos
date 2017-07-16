@@ -1,12 +1,14 @@
 <template>
-  <form @submit.prevent="addTodoTask">
+  <form @submit.prevent="addTodo({ title, description })">
     <input type="text" v-model="title" placeholder="Title"/>
     <input type="text" v-model="description" placeholder="Description" />
-    <button type="submit">AÑADIR</button>
+    <button type="submit">✔︎ AÑADIR</button>
   </form>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'add-todo',
 
@@ -18,16 +20,10 @@ export default {
   },
 
   methods: {
-    addTodoTask () {
-      this.$emit('add', {
-        title: this.title,
-        description: this.description
-      })
-      this.title = ''
-      this.description = ''
-    }
+    ...mapMutations([ 'addTodo' ])
   }
 }
+
 </script>
 
 <style scoped>

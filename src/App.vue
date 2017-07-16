@@ -4,14 +4,15 @@
     <todo
       v-for="(todo, index) in todos"
       :todo="todo"
-      :key="index"
-      @remove="removeTodo">
+      :key="index">
     </todo>
-    <add-todo @add="addTodo"></add-todo>
+    <add-todo></add-todo>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import Logo from './components/Logo.vue'
 import Todo from './components/Todo.vue'
 import AddTodo from './components/AddTodo.vue'
@@ -20,24 +21,8 @@ export default {
   name: 'app',
   components: { Logo, Todo, AddTodo },
 
-  data () {
-    return {
-      todos: [
-        { id: 0, title: 'Learn JavaScript', description: 'The first task' },
-        { id: 1, title: 'Learn Vue', description: 'The next frontend framework' },
-        { id: 2, title: 'Learn Vuex', description: 'To manage the app state' }
-      ]
-    }
-  },
-
-  methods: {
-    removeTodo ({ id }) {
-      this.todos = this.todos.filter(todo => todo.id !== id)
-    },
-    addTodo ({ title, description }) {
-      const id = this.todos.length
-      this.todos.push({ id, title, description })
-    }
+  computed: {
+    ...mapState([ 'todos' ])
   }
 }
 </script>

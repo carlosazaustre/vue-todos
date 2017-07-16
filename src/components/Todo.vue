@@ -2,11 +2,15 @@
   <div class="todo-item">
     <h3>{{ todo.title }}</h3>
     <p>{{ todo.description }}</p>
-    <button class="btn-remove" @click="removeItem">Eliminar</button>
+    <button class="btn-remove" @click="deleteTodo({ id: todo.id })">
+      ♻︎ Eliminar
+    </button>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'Todo',
   props: {
@@ -18,9 +22,7 @@ export default {
   },
 
   methods: {
-    removeItem () {
-      this.$emit('remove', { id: this.todo.id })
-    }
+    ...mapMutations([ 'deleteTodo' ])
   }
 }
 </script>
@@ -36,5 +38,6 @@ export default {
   background-color: orangered;
   border-radius: 3px;
   padding: 0.5rem;
+  color: #fff;
 }
 </style>
