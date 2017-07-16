@@ -1,8 +1,11 @@
 <template>
-  <div class="todo-item">
+  <div class="todo-item" :class="{ completed: todo.done }">
     <h3>{{ todo.title }}</h3>
     <p>{{ todo.description }}</p>
-    <button class="btn-remove" @click="deleteTodo({ id: todo.id })">
+    <button class="btn btn-done" :class="{ completed: todo.done }" @click="toggleTodo({ todo })">
+      ✔︎ Hecho!
+    </button>
+    <button class="btn btn-remove" :class="{ completed: todo.done }" @click="deleteTodo({ id: todo.id })">
       ♻︎ Eliminar
     </button>
   </div>
@@ -17,12 +20,16 @@ export default {
     todo: {
       id: Number,
       title: String,
-      description: String
+      description: String,
+      done: Boolean
     }
   },
 
   methods: {
-    ...mapMutations([ 'deleteTodo' ])
+    ...mapMutations([
+      'deleteTodo',
+      'toggleTodo'
+    ])
   }
 }
 </script>
@@ -33,11 +40,23 @@ export default {
   width: 500px;
   margin: 0 auto;
 }
-.btn-remove {
+.btn {
   border: none;
-  background-color: orangered;
+  background-color: gray;
   border-radius: 3px;
   padding: 0.5rem;
+}
+.btn-remove {
+  background-color: orangered;
   color: #fff;
+}
+.btn-done {
+  background-color: #1f913b;
+  color: #fff;
+}
+.completed {
+  background-color: #777;
+  border-color: #5b5b5b;
+  color: #ccc;
 }
 </style>
