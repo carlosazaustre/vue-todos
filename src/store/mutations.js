@@ -28,10 +28,5 @@ export const mutations = {
   // Mark a TODO task as completed
   toggleTodo (state, { todo }) {
     todo.done = !todo.done
-  },
-
-  // Edit the info of a TODO task
-  editTodo (state, { todo }) {
-    console.log(todo)
   }
 }

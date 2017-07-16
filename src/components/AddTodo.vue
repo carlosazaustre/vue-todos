@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="addTodo({ title, description })">
+  <form @submit.prevent="doneAdd">
     <input type="text" v-model="title" placeholder="Title"/>
     <input type="text" v-model="description" placeholder="Description" />
     <button type="submit">✔︎ AÑADIR</button>
@@ -20,7 +20,15 @@ export default {
   },
 
   methods: {
-    ...mapMutations([ 'addTodo' ])
+    ...mapMutations([ 'addTodo' ]),
+
+    doneAdd () {
+      this.addTodo({
+        title: this.title,
+        description: this.description
+      })
+      this.title = this.description = ''
+    }
   }
 }
 

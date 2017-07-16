@@ -54,12 +54,10 @@ export default {
   methods: {
     ...mapMutations([
       'deleteTodo',
-      'toggleTodo',
-      'editTodo'
+      'toggleTodo'
     ]),
 
     doneEdit (e) {
-      this.editTodo(this.todo)
       this.editing = false
     }
   }
